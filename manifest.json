@@ -1,0 +1,46 @@
+/**
+* Page-Edit
+*
+* manifest.json
+* Anees Ahammed Kuniyil
+* @aneesahammed
+*/
+
+
+{
+  "name": "page-edit",
+  "version": "0.2",
+  "manifest_version": 2,
+  "description": "Simple utility to to edit web-page",
+  "author":"@AneesAhammed",
+  "homepage_url": "http://aneesahammed.com/page-edit",
+  "permissions": ["contentSettings","tabs","webNavigation"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "background.html",//calls background.js
+    "persistent": true
+  },
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "page-edit (Alt+T)",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["inject.js"],
+        "run_at": "document_end"
+    }],
+  /* Keyboard shortcuts */
+	"commands": {
+		"_execute_browser_action": {
+			"suggested_key": {
+				"default": "Alt+T"
+			}
+		}
+	}
+}
